@@ -1,0 +1,13 @@
+timezone: UTC
+
+authors:
+  garthdb:
+    name: Garth Braithwaite
+    uri: http://garthdb.com/
+    email: garthdb@adobe.com
+    twitter: garthdb
+  benbalter:
+    name: Ben Balter
+    uri: http://ben.balter.com/
+    email: ben.balter@github.com
+    twitter: benbalter
