@@ -4,8 +4,13 @@
   <head>
   </head>
   <body>
-    {{ page.author.name }}
-THIS IS MY LAYOUT
-{{ content }}
+    THIS IS MY LAYOUT
+    <h1>{{ page.title }}</h1>
+    {{ content }}
+    {% if page.author.name and page.author.uri %}
+      <a href="{{ page.author.uri }}">{{ page.author.name }}</a>
+    {% else %}
+      {{ page.author }}
+    {% endif %}
   </body>
 </html>

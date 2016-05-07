@@ -1,6 +1,4 @@
 require 'jekyll'
-require 'typhoeus'
-require 'nokogiri'
 require File.expand_path('../lib/jekyll-authors', File.dirname(__FILE__))
 
 Jekyll.logger.log_level = :error

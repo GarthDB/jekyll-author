@@ -27,19 +27,24 @@ describe(Jekyll::Authors) do
   end
 
   it "has authors from _config.yml" do
-    expect(site.authors['garthdb']['name']).to match(/\AGarth Braithwaite/)
+    expect(site.config['authors']['garthdb']['name']).to match(/\AGarth Braithwaite/)
   end
 
   it "has authors from _data/authors.yml" do
-    expect(site.authors['pathawks']['name']).to match(/\APat Hawks/)
+    expect(site.config['authors']['pathawks']['name']).to match(/\APat Hawks/)
   end
 
   it "prioritizes _config.yml data" do
-    expect(site.authors['benbalter']['name']).to match('Ben Balter')
+    expect(site.config['authors']['benbalter']['name']).to match('Ben Balter')
   end
 
   it "uses authors data for page author" do
     expect(generated_page).to match(/Garth Braithwaite/)
+  end
+
+  it "leaves the string if it doesn't match author key" do
+    page = File.read(dest_dir("2014/08/13/non-author.html"))
+    expect(page).to match(/Tester McTesterton/)
   end
 
 end

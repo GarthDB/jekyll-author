@@ -6,28 +6,24 @@ module Jekyll
       end
 
       def merge_authors(site)
-        def site.authors
-          Jekyll::Utils.deep_merge_hashes(data['authors'], config['authors'])
-        end
+        site.config['authors'].merge!(site.data['authors']) { |_key, v1, _v2| v1 }
       end
 
       def post_author?(post)
-        (post.author.is_a?(String) && post.site.authors.key?(post.author))
+        (post.author.is_a?(String) && post.site.config['authors'].key?(post.author))
       end
 
       def attach_author(post)
-        post.data['author'] = post.site.authors[post.author]
-        # puts post.author
+        post.data['author'] = post.site.config['authors'][post.author]
       end
     end
   end
 end
 
 Jekyll::Hooks.register :site, :post_read do |site|
-  Jekyll::Authors.merge_authors(site) if Jekyll::Authors.authors?(site)
+  Jekyll::Authors.merge_authors(site) if Jekyll::Authors.authors?(site) && !site.data.key?('merged_authors')
 end
 
 Jekyll::Hooks.register :posts, :pre_render do |post|
   Jekyll::Authors.attach_author(post) if Jekyll::Authors.post_author?(post)
-  # puts post.author
 end
