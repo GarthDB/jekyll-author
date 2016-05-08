@@ -10,10 +10,10 @@ module Jekyll
       end
 
       def default_author?(site)
-        (site.config.key?('author'))
+        site.config.key?('author')
       end
 
-      def set_default(site)
+      def default_author(site)
         site.config['author'] = site.config['authors'].values[0]
       end
 
@@ -30,7 +30,9 @@ end
 
 Jekyll::Hooks.register :site, :post_read do |site|
   Jekyll::Authors.merge_authors(site) if Jekyll::Authors.authors?(site)
-  Jekyll::Authors.set_default(site) if !Jekyll::Authors.default_author?(site) && Jekyll::Authors.authors?(site)
+  if !Jekyll::Authors.default_author?(site) && Jekyll::Authors.authors?(site)
+    Jekyll::Authors.default_author(site)
+  end
 end
 
 Jekyll::Hooks.register :posts, :pre_render do |post|
