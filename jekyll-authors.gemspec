@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |spec|
   spec.name          = "jekyll-authors"
-  spec.version       = "0.0.1"
+  spec.version       = "0.1.0"
   spec.authors       = ["Garth Braithwaite"]
   spec.email         = ["garthdb@adobe.com"]
   spec.summary       = "A Jekyll plugin to manage author data from multiple sources."
