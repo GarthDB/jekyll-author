@@ -10,9 +10,6 @@ describe(Jekyll::Authors) do
       "show_drafts" => true,
       "url"         => "http://example.org",
       "name"       => "My awesome site",
-      "author"      => {
-        "name"        => "Dr. Jekyll"
-      },
       "collections" => {
         "my_collection" => { "output" => true },
         "other_things"  => { "output" => false }
@@ -45,6 +42,20 @@ describe(Jekyll::Authors) do
   it "leaves the string if it doesn't match author key" do
     page = File.read(dest_dir("2014/08/13/non-author.html"))
     expect(page).to match(/Tester McTesterton/)
+  end
+
+  it "sets default author from the first author in list if not set" do
+    expect(site.config['author']['name']).to match('Garth Braithwaite')
+  end
+
+  context "a default author set in config" do
+    let(:author) {"Dr. Jekyll"}
+    let(:overrides) do
+      {"author" => author}
+    end
+    it "does not override config author if set" do
+      expect(site.config['author']).to match(author)
+    end
   end
 
 end
