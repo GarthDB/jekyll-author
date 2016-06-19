@@ -1,5 +1,5 @@
 require 'jekyll'
-require File.expand_path('../lib/jekyll-authors', File.dirname(__FILE__))
+require File.expand_path('../lib/jekyll-author', File.dirname(__FILE__))
 
 Jekyll.logger.log_level = :error
 

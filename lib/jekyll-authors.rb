@@ -1,1 +1,0 @@
-require "jekyll/jekyll-authors"

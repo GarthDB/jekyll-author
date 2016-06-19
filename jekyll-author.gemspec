@@ -1,12 +1,12 @@
 # coding: utf-8
 
 Gem::Specification.new do |spec|
-  spec.name          = "jekyll-authors"
+  spec.name          = "jekyll-author"
   spec.version       = "0.1.0"
   spec.authors       = ["Garth Braithwaite"]
   spec.email         = ["garthdb@adobe.com"]
   spec.summary       = "A Jekyll plugin to manage author data from multiple sources."
-  spec.homepage      = "https://github.com/garthdb/jekyll-authors"
+  spec.homepage      = "https://github.com/garthdb/jekyll-author"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
